@@ -1,0 +1,43 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 52px;
+  padding-bottom: 20px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+
+  border-top: #CCE09C solid 1px;
+  background: -webkit-linear-gradient(#9DCA39, #83AB2F);
+  background: -moz-linear-gradient(#9DCA39, #83AB2F);
+  background: -o-linear-gradient(#9DCA39, #83AB2F);
+  text-align:center;
+  color:white !important;
+
+}
+
+.navbar-default {
+
+	.navbar-nav > li > a {
+
+
+	  color: white;
+
+	}
+
+	.navbar-brand {
+
+
+	  color: white;
+
+	}
+
+	.navbar-brand:hover, .navbar-brand:focus {
+
+	color: white;
+
+	}
+
+}
