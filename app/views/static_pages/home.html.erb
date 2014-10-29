@@ -1,2 +1,20 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% if logged_in? %>
+  <h2>Postear nuevo mensaje</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="post_form">
+        <%= render 'shared/post_form' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <%= render partial: 'posts/posts', locals: { posts: @posts} %>
+  		<div class="clearfix"></div>
+
+  </div>
+<% else %>
+
+	<%= render 'static_pages/home_page_not_logged_in' %>
+
+<% end %>

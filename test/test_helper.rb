@@ -24,6 +24,10 @@ class ActiveSupport::TestCase
     end
   end
 
+  def MiBarrioPosts(user)
+    @posts = Post.all.paginate(page: 1)
+  end
+
     private
 
     # Returns true inside an integration test.

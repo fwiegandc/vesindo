@@ -4,4 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  private
+  	def MiBarrioPosts(user)
+		@posts = Post.all.paginate(page: params[:page])
+	end
+
 end

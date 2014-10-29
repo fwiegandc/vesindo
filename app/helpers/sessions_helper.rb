@@ -19,6 +19,14 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+  end
+
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
@@ -51,4 +59,6 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.url if request.get?
   end
+
+
 end
