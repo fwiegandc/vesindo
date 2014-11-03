@@ -1,0 +1,14 @@
+
+<div class="row comment">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="user"><%= link_to comment.user.name, user_path(comment.user) %>
+			  <% if current_user?(comment.user) %>
+    | <%= link_to "Eliminar", user_post_comment_path(comment.post.user, comment.post, comment), method: :delete,
+                                  data: { confirm: "Estas seguro?" } %>
+  <% end %>
+
+		</div>
+		<div class="content"><%= comment.content %></div>
+		<div class="time-ago">Hace <%= time_ago_in_words(comment.created_at) %> atras.</div>
+	</div>
+</div>

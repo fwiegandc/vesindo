@@ -25,4 +25,17 @@ class PostTest < ActiveSupport::TestCase
     assert_not @post.valid?
   end
 
+  test "comentarios deben ser borrados si el post se elimina" do 
+
+    @user2 = User.create!(name: "Example User", email: "user@example.com",
+                     password: "foobar", password_confirmation: "foobar")
+    @post2 = @user2.posts.create!(content: "Lorem")
+    @user2.comments.create!(content: "Lorem", post_id: @post2.id)
+
+    assert_difference 'Comment.count', -1 do
+      @post2.destroy
+    end
+
+  end
+
 end

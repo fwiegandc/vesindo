@@ -31,8 +31,12 @@ users = User.order(:created_at).take(6)
   content = Faker::Lorem.sentence(5)
   users.each do |user|
 
-    user.posts.create!(content: content)
+    @post = user.posts.create!(content: content)
+    3.times do
 
+      user.comments.create!(content: content, post_id: @post.id)
+
+    end
   end
 
 end
