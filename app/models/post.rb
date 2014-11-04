@@ -5,4 +5,6 @@ class Post < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
   validates :content, presence: true
+  belongs_to :tag
+  validates :tag_id, presence: true
 end

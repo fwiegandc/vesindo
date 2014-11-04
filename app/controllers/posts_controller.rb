@@ -2,10 +2,12 @@ class PostsController < ApplicationController
 
   before_action :logged_in_user, only: [:show, :create, :destroy]
   before_action :correct_user, only: [:create, :destroy]
+  before_action :has_tag, only: [:create]
 
 	def show
 
 		  	@posts = Post.find(params[:id])
+		  	@tags = Tag.enform
 
 	end
 
@@ -18,6 +20,7 @@ class PostsController < ApplicationController
       	else
       		
       		@posts = MiBarrioPosts(current_user)
+      		@tags  = Tag.enform
       		render 'static_pages/home'
       	end
 
@@ -26,7 +29,15 @@ class PostsController < ApplicationController
 	private
 
 		def post_params
-			params.require(:post).permit(:content)
+			@tag = Tag.where(slug: params.require(:post).permit(:tag)[:tag])
+			params.require(:post).permit(:content).merge!(tag_id: @tag[0].id)
+		end
+
+		def has_tag
+
+			@tag = Tag.where(slug: params.require(:post).permit(:tag)[:tag])
+			redirect_to root_url if @tag.empty?
+			
 		end
 
 	    #Confirms the correct user.

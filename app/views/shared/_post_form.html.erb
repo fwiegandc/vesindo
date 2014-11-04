@@ -1,7 +1,22 @@
-<%= form_for @post, url: user_posts_path(current_user.id, @post.id) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new Post..." %>
-  </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+<ul class="nav nav-tabs" role="tablist">
+<% @tags.each do |tag| %>
+	<li <%= "class='active'".html_safe if tag == @tags.first %>><a href="#tab_<%= tag.slug %>" data-toggle="tab"><%= tag.name %></a></li>
 <% end %>
+</ul>
+<div class="tab-content">
+	<% @tags.each do |tag| 
+
+		if tag.name == @tags.first.name 
+
+			@clase = "active" %>
+
+			<%= render partial: "shared/post_form_#{tag.slug}", locals: { post: @post, clase: @clase } %>
+
+		<% else %>
+
+			<%= render partial: "shared/post_form_#{tag.slug}", locals: { post: @post, clase: "" } %>
+
+		<% end %>
+
+	 <% end %>
+</div>

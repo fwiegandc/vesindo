@@ -80,7 +80,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated posts should be destroyed" do
     @user.save
-    @user.posts.create!(content: "Lorem ipsum")
+    @user.posts.create!(content: "Lorem ipsum", tag_id: 1)
     assert_difference 'Post.count', -1 do
       @user.destroy
     end
@@ -90,7 +90,7 @@ class UserTest < ActiveSupport::TestCase
 
     @user2 = User.create!(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
-    @post2 = @user2.posts.create!(content: "Lorem")
+    @post2 = @user2.posts.create!(content: "Lorem", tag_id: 1)
     @user2.comments.create!(content: "Lorem", post_id: @post2.id)
 
     assert_difference 'Comment.count', -1 do

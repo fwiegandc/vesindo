@@ -9,4 +9,5 @@ class ApplicationController < ActionController::Base
 		@posts = Post.all.paginate(page: params[:page])
 	end
 
+
 end

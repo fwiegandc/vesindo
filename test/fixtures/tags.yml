@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Seguridad:
+  name: Seguridad
+  slug: seguridad
+  enform: true
+
+Limpieza:
+  name: Limpieza
+  slug: limpieza
+  enform: true

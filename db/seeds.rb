@@ -25,13 +25,27 @@ User.create!(name:  "Francisco Wiegand",
               activated_at: Time.zone.now)
 end
 
+Tag.create!(name: "Seguridad", slug: "seguridad", enform: true)
+Tag.create!(name: "Limpieza", slug: "limpieza", enform: true)
+Tag.create!(name: "Recomendación y/o favor", slug: "recomendacion_favor", enform: true)
+Tag.create!(name: "Emergencia", slug: "emergencia", enform: true)
+Tag.create!(name: "Convivencia", slug: "convivencia", enform: true)
+Tag.create!(name: "Evento", slug: "evento", enform: false)
+Tag.create!(name: "Asalto", slug: "asalto", enform: false)
+Tag.create!(name: "Delito", slug: "delito", enform: false)
+Tag.create!(name: "Hurto", slug: "hurto", enform: false)
+Tag.create!(name: "Orden", slug: "orden", enform: false)
+Tag.create!(name: "Otro", slug: "otro", enform: false)
+
 users = User.order(:created_at).take(6)
 50.times do
 
   content = Faker::Lorem.sentence(5)
   users.each do |user|
 
-    @post = user.posts.create!(content: content)
+
+
+    @post = user.posts.create!(content: content, tag_id: rand(1..6))
     3.times do
 
       user.comments.create!(content: content, post_id: @post.id)
@@ -40,3 +54,4 @@ users = User.order(:created_at).take(6)
   end
 
 end
+

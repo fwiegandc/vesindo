@@ -4,7 +4,7 @@ class PostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     # This code is not idiomatically correct.
-    @post = @user.posts.build(content: "Lorem ipsum")
+    @post = posts(:orange)
   end
 
   test "micropost should be valid" do
@@ -13,6 +13,11 @@ class PostTest < ActiveSupport::TestCase
 
   test "user id should be present" do
     @post.user_id = nil
+    assert_not @post.valid?
+  end
+
+  test "post tag should be present" do
+    @post.tag = nil
     assert_not @post.valid?
   end
 
@@ -29,7 +34,7 @@ class PostTest < ActiveSupport::TestCase
 
     @user2 = User.create!(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
-    @post2 = @user2.posts.create!(content: "Lorem")
+    @post2 = @user2.posts.create!(content: "Lorem", tag_id: @post.tag.id)
     @user2.comments.create!(content: "Lorem", post_id: @post2.id)
 
     assert_difference 'Comment.count', -1 do

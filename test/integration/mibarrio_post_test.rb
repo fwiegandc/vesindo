@@ -17,7 +17,7 @@ class MibarrioPostTest < ActionDispatch::IntegrationTest
  		get root_path
  		assert_difference 'Post.count', +1 do
 
- 			post user_posts_path(@user.id), post: {content: "holaa"}
+ 			post user_posts_path(@user.id), post: {content: "holaa", tag: "seguridad"}
 
  		end
  		follow_redirect!
@@ -32,7 +32,7 @@ class MibarrioPostTest < ActionDispatch::IntegrationTest
 		get root_path
  		assert_no_difference 'Post.count' do
 
- 			post user_posts_path(@user.id), post: {content: ""}
+ 			post user_posts_path(@user.id), post: {content: "", tag: "seguridad"}
 
  		end
  		assert_template root_path
