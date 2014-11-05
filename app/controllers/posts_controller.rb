@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 	def show
 
 		  	@posts = Post.find(params[:id])
-		  	@tags = Tag.enform
+		  	#@tags = Tag.enform
 
 	end
 
