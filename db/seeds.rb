@@ -11,7 +11,15 @@ User.create!(name:  "Francisco Wiegand",
              password:              "w1989cf",
              password_confirmation: "w1989cf",
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             hogar_id: 1)
+
+
+99.times do |n|
+
+  Hogar.create!(user_admin_id: n+1)
+
+end
 
 99.times do |n|
   name  = Faker::Name.name
@@ -22,7 +30,8 @@ User.create!(name:  "Francisco Wiegand",
               password:              password,
               password_confirmation: password,
               activated: true,
-              activated_at: Time.zone.now)
+              activated_at: Time.zone.now,
+              hogar_id: n+1)
 end
 
 Tag.create!(name: "Seguridad", slug: "seguridad", enform: true)

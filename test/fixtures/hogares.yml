@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+CEO:
+  user_admin: michael
+
+CEO2:
+  user_admin: lana
+
+canucha:
+  user_admin: archer

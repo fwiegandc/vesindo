@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
 
 	def setup
 
-		@user = User.new(name: "Francisco Wiegnad", email:"franciscowiegand@gmail.com", password: "foobar", password_confirmation: "foobar")
+		@user = User.new(name: "Francisco Wiegnad", email:"franciscowiegand@gmail.com", password: "foobar", password_confirmation: "foobar", hogar_id: 1)
 
 	end
 
@@ -16,6 +16,11 @@ class UserTest < ActiveSupport::TestCase
 		@user.name = ""
 		assert_not @user.valid?
 	end
+
+  #test "usuario debiese tener un hogar" do
+    #por completar cuando tenga las direcciones
+   # assert_not true
+  #end
 
 	test "email debiese tener el usuario" do
 		@user.name = ""

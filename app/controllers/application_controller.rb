@@ -9,5 +9,10 @@ class ApplicationController < ActionController::Base
 		@posts = Post.all.paginate(page: params[:page])
 	end
 
+	def hogares_disponibles
+
+		Hogar.all
+
+	end
 
 end
