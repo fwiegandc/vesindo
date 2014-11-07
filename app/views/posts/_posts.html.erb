@@ -1,28 +1,8 @@
 <% if posts.any? 
 
-	i = 0
 	posts.each do |post| %>
 
-		<% if i.even?  %>
-		
-			<div class="row" id="#{i}">
-
-		<% end %>
-
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="#{i}">
 			<%= render partial: 'posts/post', locals: { post: post } %>
-		</div>
-
-		<% if i.odd?  %>
-		
-			</div>
-
-		<% end
-
-		i += 1 
-
-		%>
-
 
 	<% end %>
 

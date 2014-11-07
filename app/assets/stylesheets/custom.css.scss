@@ -75,10 +75,21 @@ $verde: #9DCA39;
   padding-bottom: 2em;
 }
 
+.post {
+
+
+}
+
 /* Contenido de la página variable según navegador */
 
 @media (max-width: 767px) {
 
+  .post:nth-child(odd) {
+    width:100%;
+  }
+  .post:nth-child(even) {
+    width:100%;
+  }
 
 }
 @media (min-width: 768px) {
@@ -89,6 +100,15 @@ $verde: #9DCA39;
     color: black;
     margin-bottom: 0 !important;
 
+  }
+
+  .post:nth-child(odd) {
+    float:left;
+    width:50%;
+  }
+  .post:nth-child(even) {
+      float: right;
+      width:50%;
   }
 
 }
