@@ -1,9 +1,23 @@
-  <div class="center jumbotron">
-    <h1>Bienvenido a Vesindo</h1>
-
+<div class="center jumbotron jumbotron-not-logged-in mediapantalla">
+ <div class="container fondoblancotransparente">
+    
     <h2>
-		Este es el MVP de Vesindo
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<h1 class="text-center">Bienvenido a Vesindo</h1>
+			<h2 class="text-center hidden-xs">Vesindo es una red social gratis y privada que comunica y organiza a los vecinos, con el fin de que puedan resolver sus necesidades de la vida diaria</h2>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<%= render partial: 'users/new', locals: {user: User.new } %>
+		</div>
     </h2>
-
-    <%= link_to "Registrate ahora!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
+</div>
+<!-- 
+<div class="fondo-gris">
+	<div class="container padding-top-bottom ">
+		<div class="col-xs-12 col-sm-4 hidden-xs text-center">Conectate con tus vecinos, carabineros y municipalidad para organizarte contra la delincuencia, o dar alarmas ante ella.</div>
+		<div class="col-xs-12 col-sm-4 hidden-xs text-center">Entérate de lo que pasa en tu barrio y en sus alrededores</div>
+		<div class="col-xs-12 col-sm-4 hidden-xs text-center">Vesindo forma redes privadas en los barrios, donde la información la reciben solo los vecinos o quién tu desees.</div>
+	</div>
+</div>
+ -->

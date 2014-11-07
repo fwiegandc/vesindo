@@ -7,6 +7,8 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
+$verde: #9DCA39;
+
 .navbar {
 
   border-top: #CCE09C solid 1px;
@@ -15,6 +17,13 @@ body {
   background: -o-linear-gradient(#9DCA39, #83AB2F);
   text-align:center;
   color:white !important;
+
+}
+
+#logo-nav-bar{
+
+    height: 100%;
+    margin-top: -5px;
 
 }
 
@@ -41,6 +50,46 @@ body {
 	}
 
 }
+
+.fondoblancotransparente {
+  
+  background-color: rgba(256, 256, 256, 0.6) !important;
+  padding: 3em;
+
+}
+
+.footer {
+
+  background-color: $verde;
+  color: white;
+
+}
+
+.padding-top-bottom {
+
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+}
+
+/* Contenido de la página variable según navegador */
+
+@media (max-width: 767px) {
+
+
+}
+@media (min-width: 768px) {
+
+  .jumbotron-not-logged-in {
+
+    background-image: image-url("jumbotron_not_logged_in.jpg") !important;
+    color: black;
+    margin-bottom: 0 !important;
+
+  }
+
+}
+
 
 /* Ver informacion de debug nicer */
 @mixin box_sizing {

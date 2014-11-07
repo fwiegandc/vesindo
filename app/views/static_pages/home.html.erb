@@ -1,4 +1,5 @@
 <% if logged_in? %>
+<div class="container">
   <h2>Postear nuevo mensaje</h2>
   <div class="row">
     <div class="col-md-12">
@@ -13,6 +14,7 @@
   		<div class="clearfix"></div>
 
   </div>
+</div>
 <% else %>
 
 	<%= render 'static_pages/home_page_not_logged_in' %>
