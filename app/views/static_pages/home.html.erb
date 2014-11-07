@@ -1,20 +1,7 @@
 <% if logged_in? %>
-<div class="container">
-  <h2>Postear nuevo mensaje</h2>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="post_form">
-        <%= render 'shared/post_form' %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
 
-    <%= render partial: 'posts/posts', locals: { posts: @posts} %>
-  		<div class="clearfix"></div>
+  <%= render partial: 'static_pages/home_page_logged_in', locals: { posts: @posts } %>
 
-  </div>
-</div>
 <% else %>
 
 	<%= render 'static_pages/home_page_not_logged_in' %>

@@ -1,22 +1,24 @@
-<ul class="nav nav-tabs" role="tablist">
-<% @tags.each do |tag| %>
-	<li <%= "class='active'".html_safe if tag == @tags.first %>><a href="#tab_<%= tag.slug %>" data-toggle="tab"><%= tag.name %></a></li>
-<% end %>
-</ul>
-<div class="tab-content">
-	<% @tags.each do |tag| 
+<div class="post_form">
+	<ul class="nav nav-tabs" role="tablist">
+	<% @tags.each do |tag| %>
+		<li <%= "class='active'".html_safe if tag == @tags.first %>><a href="#tab_<%= tag.slug %>" data-toggle="tab"><%= tag.name %></a></li>
+	<% end %>
+	</ul>
+	<div class="tab-content">
+		<% @tags.each do |tag| 
 
-		if tag.name == @tags.first.name 
+			if tag.name == @tags.first.name 
 
-			@clase = "active" %>
+				@clase = "active" %>
 
-			<%= render partial: "shared/post_form_#{tag.slug}", locals: { post: @post, clase: @clase } %>
+				<%= render partial: "shared/post_form_#{tag.slug}", locals: { post: @post, clase: @clase } %>
 
-		<% else %>
+			<% else %>
 
-			<%= render partial: "shared/post_form_#{tag.slug}", locals: { post: @post, clase: "" } %>
+				<%= render partial: "shared/post_form_#{tag.slug}", locals: { post: @post, clase: "" } %>
 
-		<% end %>
+			<% end %>
 
-	 <% end %>
+		 <% end %>
+	</div>
 </div>

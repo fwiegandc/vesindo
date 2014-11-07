@@ -1,18 +1,22 @@
-<h2>Sessions#new</h2>
-<div class="row">
-  <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-4 col-lg-offset-4 ">
-    <%= form_for(:session, url: login_path) do |f| %>
+<div class="container mediapantalla">
+  <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 ">
+      <div class="titulo-seccion text-center">
+         <h2>Entrar a mi cuenta</h2>
+      </div>
+      <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
-      <%= link_to "(forgot password)", new_password_reset_path %>
-      <%= f.password_field :password %>
+        <%= f.label :password %>
+        <%= link_to "(Recuperar contraseña)", new_password_reset_path %>
+        <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+        <%= f.submit "Entrar", class: "btn btn-primary" %>
+      <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+      <p>Eres Nuevo? <%= link_to "Registrate ahora!", new_user_path %></p>
+    </div>
   </div>
 </div>
