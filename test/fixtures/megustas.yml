@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: orange
+  user: michael
+  megusta: true
+
+two:
+  post: tau_manifesto
+  user: michael
+  megusta: true
+
+three:
+  post: orange
+  user: archer
+  megusta: true

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :megustas, dependent: :destroy
   belongs_to :hogar
   validates :hogar_id, presence: true
 

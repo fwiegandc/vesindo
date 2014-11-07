@@ -2,9 +2,10 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   def setup
-    @user = users(:michael)
+    @user = users(:archer)
     # This code is not idiomatically correct.
     @post = posts(:orange)
+
   end
 
   test "micropost should be valid" do
@@ -12,7 +13,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test "user id should be present" do
-    @post.user_id = nil
+    @post.user = nil
     assert_not @post.valid?
   end
 
@@ -32,12 +33,23 @@ class PostTest < ActiveSupport::TestCase
 
   test "comentarios deben ser borrados si el post se elimina" do 
 
+    @post.save
     @user2 = User.create!(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
-    @post2 = @user2.posts.create!(content: "Lorem", tag_id: @post.tag.id)
-    @user2.comments.create!(content: "Lorem", post_id: @post2.id)
+    @post2 = @user2.posts.create!(content: "Lorem", tag: @post.tag)
+    @user2.comments.create!(content: "Lorem", post: @post2)
 
     assert_difference 'Comment.count', -1 do
+      @post2.destroy
+    end
+
+  end
+
+  test "cuando se borra un post, se borran los me gusta asociados a el" do
+
+    @post2 = posts(:mallory_post)
+    @megusta2 = Megusta.create!(user: @post.user, post: @post2)
+    assert_difference 'Megusta.count', -1 do
       @post2.destroy
     end
 

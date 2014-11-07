@@ -4,6 +4,9 @@
 	  <div class="timestamp">
 	    Hace <%= time_ago_in_words(post.created_at) %> atras.
 	  </div>
+
+	<%= render partial: 'megustas/megusta', locals: { post: post } %>
+
 	  <%= link_to 'Ver Post', user_post_path(post.user, post.id) %>
 	  <div class="comments">
 		<%  post.comments.each do |comment| %>

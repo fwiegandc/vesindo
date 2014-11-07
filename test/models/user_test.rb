@@ -5,7 +5,7 @@ class UserTest < ActiveSupport::TestCase
 	def setup
 
 		@user = User.new(name: "Francisco Wiegnad", email:"franciscowiegand@gmail.com", password: "foobar", password_confirmation: "foobar", hogar_id: 1)
-
+    @tag = tags(:Seguridad)
 	end
 
 	test "usuario debiese estar correcto" do
@@ -85,7 +85,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated posts should be destroyed" do
     @user.save
-    @user.posts.create!(content: "Lorem ipsum", tag_id: 1)
+    @user.posts.create!(content: "Lorem ipsum", tag: @tag)
     assert_difference 'Post.count', -1 do
       @user.destroy
     end
@@ -95,12 +95,23 @@ class UserTest < ActiveSupport::TestCase
 
     @user2 = User.create!(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
-    @post2 = @user2.posts.create!(content: "Lorem", tag_id: 1)
-    @user2.comments.create!(content: "Lorem", post_id: @post2.id)
+    @post2 = @user2.posts.create!(content: "Lorem", tag: @tag)
+    @user2.comments.create!(content: "Lorem", post: @post2)
 
     assert_difference 'Comment.count', -1 do
       @user2.destroy
     end
+
+  end
+
+  test "Me gustas deben ser borrados si el usuario se elimina" do
+
+        @other_user = users(:lana)
+        @post = posts(:mallory_post)
+        @megusta = Megusta.create!(user: @other_user, post: @post)
+        assert_difference 'Megusta.count', -1 do
+           @other_user.destroy
+        end
 
   end
 

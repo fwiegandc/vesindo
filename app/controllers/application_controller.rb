@@ -5,14 +5,16 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
-  	def MiBarrioPosts(user)
-		@posts = Post.all.paginate(page: params[:page])
-	end
 
-	def hogares_disponibles
+    def MiBarrioPosts(user)
+  		@posts = Post.all.paginate(page: params[:page])
+  	end
 
-		Hogar.all
+  	def hogares_disponibles
 
-	end
+  		Hogar.all
+
+  	end
+
 
 end

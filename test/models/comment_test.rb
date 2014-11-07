@@ -25,13 +25,13 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "comentario debe tener usuario" do
-  	@comment.user_id = nil
+  	@comment.user = nil
   	assert_not @comment.valid?
   end
 
   test "comentario debe pertenecer a un post" do
 
-  	@comment.post_id = nil
+  	@comment.post = nil
   	assert_not @comment.valid?
 
   end

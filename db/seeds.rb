@@ -14,13 +14,6 @@ User.create!(name:  "Francisco Wiegand",
              activated_at: Time.zone.now,
              hogar_id: 1)
 
-
-99.times do |n|
-
-  Hogar.create!(user_admin_id: n+1)
-
-end
-
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -32,6 +25,12 @@ end
               activated: true,
               activated_at: Time.zone.now,
               hogar_id: n+1)
+end
+
+User.all.each do |user|
+
+  Hogar.create!(user_admin: user)
+
 end
 
 Tag.create!(name: "Seguridad", slug: "seguridad", enform: true)
@@ -57,10 +56,27 @@ users = User.order(:created_at).take(6)
     @post = user.posts.create!(content: content, tag_id: rand(1..6))
     3.times do
 
-      user.comments.create!(content: content, post_id: @post.id)
+      user.comments.create!(content: content, post: @post)
 
     end
   end
 
 end
 
+#Rellenamos con me gusta
+
+@posts = Post.all
+
+@posts.each do |post|
+
+  users.each do |user|
+
+      if [true, false].sample
+
+       Megusta.create!(user: user, post: post)
+
+      end
+
+  end
+
+end

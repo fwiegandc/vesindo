@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
 	def create
 
+
 		@post = @current_user.posts.new(post_params)
 		if @post.save
 			flash[:success] = "Post publicado"
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
 
 		def post_params
 			@tag = Tag.where(slug: params.require(:post).permit(:tag)[:tag])
-			params.require(:post).permit(:content).merge!(tag_id: @tag[0].id)
+			params.require(:post).permit(:content).merge!(tag: @tag[0])
 		end
 
 		def has_tag
