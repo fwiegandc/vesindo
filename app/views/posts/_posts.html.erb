@@ -1,8 +1,15 @@
 <% if posts.any? 
 
-	posts.each do |post| %>
+	posts.each.with_index do |post, index| %>
 
-			<%= render partial: 'posts/post', locals: { post: post } %>
+			<% 
+			if index.even? %>
+				<div class="col-izq">
+			<% else %>
+				<div class="col-der">
+			<% end %>
+				<%= render partial: 'posts/post', locals: { post: post } %>
+			</div>
 
 	<% end %>
 

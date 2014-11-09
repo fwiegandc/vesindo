@@ -1,5 +1,7 @@
-<h2><%= @user.name %></h2>
-<p>Email:<%= @user.email %></p>
-<p><%= link_to "Ver hogar de #{@user.name}", @user.hogar %></p>
-<h3>Últimos Posts</h3>
-<%= render partial: 'posts/posts', locals: { posts: @posts} %>
+<div class="container perfil-container">
+	<h2><%= @user.name %></h2>
+	<p>Email:<%= @user.email %></p>
+	<p><%= link_to "Ver hogar de #{@user.name}", @user.hogar %></p>
+	<h3>Últimos Posts</h3>
+	<%= render partial: 'posts/posts', locals: { posts: @posts} %>
+</div>

@@ -1,10 +1,15 @@
-<h1>Sample App</h1>
+<h1>Bienvenido a Vesindo!</h1>
 
-<p>Hi <%= @user.name %>,</p>
+<p>Hola <%= @user.name %>,</p>
 
 <p>
-Welcome to the Sample App! Click on the link below to activate your account:
+¡Que alegría que estés junto a nosotros! Porfavor, haz clic en el siguiente link para terminar de activar tu cuenta:
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+<%= link_to "Activar cuenta Vesindo", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
+
+<p>
+	Te damos las gracias sinceras,
+	El equipo de Vesindo
+</p>

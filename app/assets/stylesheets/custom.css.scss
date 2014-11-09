@@ -102,12 +102,12 @@ $verde: #9DCA39;
 
   }
 
-  .post:nth-child(odd) {
-    float:left;
+  .col-der:nth-child(even) {
+    float:right;
     width:50%;
   }
-  .post:nth-child(even) {
-      float: right;
+  .col-izq:nth-child(odd) {
+      float: left;
       width:50%;
   }
 
