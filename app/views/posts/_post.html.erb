@@ -1,19 +1,18 @@
-<div class="post col-xs-12" id="post-<%= post.id %>">
+<div class="post col-xs-12 padding-top padding-bottom" id="post-<%= post.id %>">
 	  <div class="user"><%= link_to post.user.name, post.user %> > <%= post.tag.name %></div>
-	  <div class="content"><%= post.content %></div>
-	  <div class="timestamp">
+	  <div class="content padding-top"><%= post.content %></div>
+	  <div class="timestamp padding-top">
 	    Hace <%= time_ago_in_words(post.created_at) %> atras.
 	  </div>
 
 	<%= render partial: 'megustas/megusta', locals: { post: post } %>
-
-	  <%= link_to 'Ver Post', user_post_path(post.user, post.id) %>
-	  <div class="comments">
+	  <div class="comments padding-top">
+	  <div class="titulo-comments h4 padding-top">Comentarios</div>
 		<%  post.comments.each do |comment| %>
 			<%= render partial: 'comments/comment', locals: { comment: comment } %>
 		<% end %>
 	  </div>
-	  <div class="comment-box">
+	  <div class="comment-box padding-top">
 	  		<%= render partial: 'comments/comment_box', locals: { post: post } %>
 	  </div>
 </div>

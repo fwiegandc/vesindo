@@ -20,6 +20,7 @@ gem 'jbuilder',                '2.1.3'
 gem 'rails-html-sanitizer',    '1.0.1'
 gem 'sdoc',                    '0.4.0', group: :doc  
 gem 'pg',             '0.17.1'
+gem 'seedbank'
 
 group :development, :test do
 

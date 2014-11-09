@@ -1,6 +1,6 @@
 <%= form_for :comment, url: user_post_comments_path(post.user.id, post.id) do |f| %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new Comment..." %>
+    <%= f.text_area :content, placeholder: "Publicar nuevo comentario..." %>
   </div>
   <%= f.submit "Comentar", class: "btn btn-primary" %>
 <% end %>

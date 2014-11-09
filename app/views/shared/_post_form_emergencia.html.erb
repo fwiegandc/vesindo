@@ -2,10 +2,10 @@
 	 <%= form_for post, url: user_posts_path(current_user.id, post.id) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 	    <div class="field">
-	    <%= f.text_area :content, placeholder: "Compose new Post..." %>
+	    <%= f.text_area :content, placeholder: "Escribe aquí para publicar nuevo mensaje..." %>
 	    <%= f.hidden_field :tag, :value => :emergencia %>
 
 	    </div>
-	    <%= f.submit "Post", class: "btn btn-primary" %>
+	    <%= f.submit "Publicar!", class: "btn btn-primary" %>
 	<% end %>
 </div>

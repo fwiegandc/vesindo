@@ -1,28 +1,20 @@
-<%
-@megusta = post.usuario_puso_me_gusta?(current_user)
-if @megusta %> 
-	<%= form_for :megusta, url: megusta_path(@megusta), method: :delete do |f| %>
-		<%= f.hidden_field :post_id, :value => post.id %>
-		<%= f.submit "Ya no me gusta", class: "btn btn-primary btn-nomegusta" %>
-	<% end %>
-<% else %>
-	<%= form_for :megusta, url: megustas_path do |f| %>
-		<%= f.hidden_field :post_id, :value => post.id %>
-		<%= f.submit "Me Gusta", class: "btn btn-primary btn-megusta" %>
-	<% end %>
-<% end %>
-
-<% if post.megustas.any? %>
-	<div class="megusta-personas">
-  		A <% post.megustas.take(3).each do |megusta| %>
-  			<%= link_to megusta.user.name, user_path(megusta.user) %>
-  			<%= "," if (post.megustas.take(3).first == megusta && post.megustas.count > 2) || (post.megustas.take(2).last == megusta && post.megustas.count > 3)%>
-  			<%= "y" if (post.megustas.take(2).last == megusta && post.megustas.count == 3) ||  (post.megustas.take(2).first == megusta && post.megustas.count == 2) %>
-  			<% end %>
-  		  <% if post.megustas.count > 3 %>
-  				y <%= pluralize(post.megustas.count-3, "persona") %> más <%= "le".pluralize(post.megustas.count-3) %> gusta esto.
-  		  <% else %>
-  		  		<%= "le".pluralize(post.megustas.count) %> gusta esto.
-  		  <% end %>
-  	</div>
-<% end %>
+<div class="megusta-personas padding-top">
+  <div class="col-xs-12 col-md-4">
+    <%
+    @megusta = post.usuario_puso_me_gusta?(current_user)
+    if @megusta %> 
+    	<%= form_for :megusta, url: megusta_path(@megusta), html: { class: "form-inline" } , method: :delete do |f| %>
+    		<%= f.hidden_field :post_id, :value => post.id %>
+    		<%= f.submit "Ya no me gusta", class: "btn btn-danger btn-nomegusta" %>
+    	<% end %>
+    <% else %>
+    	<%= form_for :megusta, url: megustas_path do |f| %>
+    		<%= f.hidden_field :post_id, :value => post.id %>
+    		<%= f.submit "Me Gusta", class: "btn btn-success btn-megusta" %>
+    	<% end %>
+    <% end %>
+  </div>
+  <div class="col-xs-12 col-md-8">
+  <%= render partial: 'megustas/personas_megusta', locals: { post: post } %>
+  </div>
+</div>

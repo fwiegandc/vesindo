@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def asignar_hogar
-    self.hogar_id = 1 if self.hogar_id.nil?
+    self.hogar_id = 2 if self.hogar_id.nil?
   end
 
   def password_reset_expired?

@@ -1,5 +1,4 @@
-
-<div class="row comment">
+<div class="row comment padding-top">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="user"><%= link_to comment.user.name, user_path(comment.user) %>
 			  <% if current_user?(comment.user) %>
@@ -8,7 +7,7 @@
   <% end %>
 
 		</div>
-		<div class="content"><%= comment.content %></div>
-		<div class="time-ago">Hace <%= time_ago_in_words(comment.created_at) %> atras.</div>
+		<div class="content padding-top"><%= comment.content %></div>
+		<div class="time-ago padding-top">Hace <%= time_ago_in_words(comment.created_at) %> atras.</div>
 	</div>
 </div>

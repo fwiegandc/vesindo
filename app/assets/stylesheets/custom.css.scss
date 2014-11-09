@@ -76,43 +76,7 @@ $verde: #9DCA39;
 }
 
 .post {
-
-
 }
-
-/* Contenido de la página variable según navegador */
-
-@media (max-width: 767px) {
-
-  .post:nth-child(odd) {
-    width:100%;
-  }
-  .post:nth-child(even) {
-    width:100%;
-  }
-
-}
-@media (min-width: 768px) {
-
-  .jumbotron-not-logged-in {
-
-    background-image: image-url("jumbotron_not_logged_in.jpg") !important;
-    color: black;
-    margin-bottom: 0 !important;
-
-  }
-
-  .col-der:nth-child(even) {
-    float:right;
-    width:50%;
-  }
-  .col-izq:nth-child(odd) {
-      float: left;
-      width:50%;
-  }
-
-}
-
 
 /* Ver informacion de debug nicer */
 @mixin box_sizing {
@@ -161,19 +125,65 @@ input {
 
 .post {
   
-  margin-top: 2em;
+  background-color: beige;
+  @padding-top;
+  @padding-bottom;
 
   .comments {
 
-    margin-left: 2em;
-    padding-top: 1em;
+    padding-left: 2em;
+    @padding-top;
+    @padding-bottom;
 
-    .comment {
-    
-    padding-top: 1em;
+  }
 
-    }
+  .user {
 
+    background-color: white;
+    line-height: 3;
+    padding-left: 1em;
+
+  }
+
+  .comment-box{
+
+    padding-left: 2em;
+    @padding-top;
+    @padding-bottom;
+
+  }
+
+}
+
+/* Contenido de la página variable según navegador */
+
+@media (max-width: 767px) {
+
+  .post:nth-child(odd) {
+    width:100%;
+  }
+  .post:nth-child(even) {
+    width:100%;
+  }
+
+}
+@media (min-width: 768px) {
+
+  .jumbotron-not-logged-in {
+
+    background-image: image-url("jumbotron_not_logged_in.jpg") !important;
+    color: black;
+    margin-bottom: 0 !important;
+
+  }
+
+  .col-der:nth-child(even) {
+    float:right;
+    width:48%;
+  }
+  .col-izq:nth-child(odd) {
+      float: left;
+      width:48%;
   }
 
 }
