@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
     def MiBarrioPosts(user)
-  		@posts = Post.all.paginate(page: params[:page])
+  		@posts = Post.all.paginate(page: params[:page]).per_page(20)
   	end
 
   	def hogares_disponibles

@@ -1,12 +1,20 @@
 <div class="container">
-	    <div class="post col-xs-12 col-izq"><%= render 'shared/post_form' %></div>
-	    <div class="post col-xs-12 agradecimiento col-der">
-	    	<div class="post-mensaje">
-	    		Todo el equipo de Vesindo te da las gracias por apoyarnos desarrollando esta aplicación. Estamos muy agradecidos contigo! <br>
-		      	Si quieres más detalles del proyecto:
-		      	<br> Visita <a href="http://www.vesindo.com">Vesindo.com</a>
-		      	<br> Escríbenos a contacto@vesindo.com
-	    	</div>
-      </div>
-        <%= render partial: 'posts/posts', locals: { posts: posts} %>
+	<div id="masonry-container" class="masonry-container transitions-enabled effect-2 has-gutters clearfix">
+
+		<div class="box col-xs-12 col-md-5">
+			<div class="post"><%= render 'shared/post_form' %></div>
+		</div>
+
+		<div class="box col-xs-12 col-md-5">
+			<div class="post">
+				<div class="post-mensaje">
+		    		Todo el equipo de Vesindo te da las gracias por apoyarnos desarrollando esta aplicación. Estamos muy agradecidos contigo! <br>
+			      	Si quieres más detalles del proyecto:
+			      	<br> Visita <a href="http://www.vesindo.com">Vesindo.com</a>
+			      	<br> Escríbenos a contacto@vesindo.com
+				</div>
+			</div>
+		</div>
+		<%= render partial: 'posts/posts', locals: { posts: posts} %>
+	</div>
 </div>

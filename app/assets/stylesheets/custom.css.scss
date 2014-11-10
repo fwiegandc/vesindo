@@ -163,7 +163,6 @@ input {
   
   background-color: beige;
   @extend .padding;
-  @extend .margin;
 
   .post-mensaje {
 
@@ -238,13 +237,13 @@ input {
 /* Contenido de la página variable según navegador */
 
 @media (max-width: 767px) {
-
+/*
   .post:nth-child(odd) {
     width:100%;
   }
   .post:nth-child(even) {
     width:100%;
-  }
+  } */
 
 }
 @media (min-width: 768px) {
@@ -256,7 +255,7 @@ input {
     margin-bottom: 0 !important;
 
   }
-
+/*
   .col-der:nth-child(even) {
     float:right;
     width:48%;
@@ -265,5 +264,21 @@ input {
       float: left;
       width:48%;
   }
+*/
+}
 
+/* Columnas masonry */
+#masonry-container {
+
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.box{
+  background-color: beige !important;
 }

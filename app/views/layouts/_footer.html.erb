@@ -22,5 +22,20 @@
         
           $(".mediapantalla").css('min-height',$( window ).height()/2);
           $(".pantallaentera").css('min-height',$( window ).height());
+
+          $(function(){
+
+			  $('#masonry-container').masonry({
+			    itemSelector: '.box',
+			    gutterWidth: 40
+			  });
+
+			});
+
+          	new AnimOnScroll( document.getElementById( 'masonry-container' ), {
+				minDuration : 0.4,
+				maxDuration : 0.7,
+				viewportFactor : 0.2
+			} );
         
     </script>

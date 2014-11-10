@@ -1,20 +1,14 @@
-<% if posts.any? 
+	<% if posts.any? 
 
-	posts.each.with_index do |post, index| %>
+		posts.each.with_index do |post, index| %>
 
-			<% 
-			if index.even? %>
-				<div class="col-izq">
-			<% else %>
-				<div class="col-der">
-			<% end %>
-				<%= render partial: 'posts/post', locals: { post: post } %>
-			</div>
+				<div class="box col-xs-12 col-md-5">
+					<%= render partial: 'posts/post', locals: { post: post } %>
+				</div>
 
+		<% end %>
+
+	<div class="box col-xs-12 col-md-5">
+		<%= will_paginate posts %>
+	</div>
 	<% end %>
-
-	<div class="clearfix"></div>
-
-<%= will_paginate posts %>
-
-<% end %>
