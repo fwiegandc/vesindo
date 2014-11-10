@@ -1,4 +1,4 @@
-<div class="post_form">
+<div class="post-form">
 	<ul class="nav nav-tabs" role="tablist">
 	<% @tags.each do |tag| %>
 		<li <%= "class='active'".html_safe if tag == @tags.first %>><a href="#tab_<%= tag.slug %>" data-toggle="tab"><%= tag.name %></a></li>

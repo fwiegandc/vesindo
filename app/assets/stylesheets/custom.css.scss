@@ -65,17 +65,40 @@ $verde: #9DCA39;
 
 }
 
+.margin {
+  margin: 0.5em;
+}
+
+.padding {
+  padding:0.5em;
+}
+
+.padding-left {
+  padding-left:0.5em;
+}
+
+.padding-right {
+  padding-right: 0.5em;
+}
+
 .padding-top{
-
-    padding-top: 2em;
-
+  padding-top: 0.5em;
 }
 
 .padding-bottom{
-  padding-bottom: 2em;
+  padding-bottom: 0.5em;
 }
 
-.post {
+.padding-bottom-double{
+  padding-bottom: 0.5em;
+}
+
+.padding-left-double{
+  padding-left:1em;
+}
+
+.padding-right-double{
+  padding-right: 1em;
 }
 
 /* Ver informacion de debug nicer */
@@ -123,34 +146,91 @@ input {
   }
 }
 
+/* Estilos de los post */
+.post-form{
+
+  @extend .padding;
+
+  .post-form-box {
+
+    height: 5em;
+
+  }
+
+}
+
 .post {
   
   background-color: beige;
-  @padding-top;
-  @padding-bottom;
+  @extend .padding;
+  @extend .margin;
+
+  .post-mensaje {
+
+    background-color: white;
+    @extend .padding-bottom;
+    @extent .padding-top;
+    @extend .padding-left-double;
+    @extend .padding-right-double;
+    @extend .margin;
+
+
+    .tag{
+
+      line-height: 2.5;
+      color: black;
+      border-bottom: 1px solid #D3D3D3;
+      @extend .h5;
+    }
+
+    .tag:first-letter {
+       text-transform:uppercase;
+    }
+
+    .megusta {
+      
+      overflow: auto;
+      @extend .padding-bottom;
+      padding-top: 2em;
+
+    }
+
+  }
 
   .comments {
 
-    padding-left: 2em;
-    @padding-top;
-    @padding-bottom;
+      @extend .padding-left-double;
 
+      .comment {
+          
+          .user {
+            @extend h5;
+          }
+        border-bottom: 1px solid #D3D3D3;
+        @extend .margin;
+        @extend .padding-bottom-double;
+
+      }
+   
   }
 
   .user {
 
-    background-color: white;
-    line-height: 3;
-    padding-left: 1em;
+    line-height: 2;
 
   }
 
-  .comment-box{
+  .comment-box-form{
 
     padding-left: 2em;
-    @padding-top;
-    @padding-bottom;
+      @extend .padding;
+      @extend .margin;
 
+    .comment-box {
+
+      height: 2em;
+
+    }
   }
 
 }
