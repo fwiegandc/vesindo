@@ -5,7 +5,7 @@
     if @megusta %> 
     	<%= form_for :megusta, url: megusta_path(@megusta), html: { class: "form-inline" } , method: :delete do |f| %>
     		<%= f.hidden_field :post_id, :value => post.id %>
-    		<%= f.submit "Ya no me gusta", class: "btn btn-danger btn-nomegusta" %>
+    		<%= f.submit "No me gusta", class: "btn btn-danger btn-nomegusta" %>
     	<% end %>
     <% else %>
     	<%= form_for :megusta, url: megustas_path do |f| %>
