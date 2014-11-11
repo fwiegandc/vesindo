@@ -16,7 +16,7 @@ class MegustaPostsTest < ActionDispatch::IntegrationTest
 
   	log_in_as(@user)
   	get root_path
-  	assert_select "div#post-#{@post.id} input[class=?]", "btn btn-primary btn-megusta"
+  	assert_select "div#post-#{@post.id} input[class=?]", "btn btn-success btn-megusta"
   	assert_difference 'Megusta.count', +1 do
 
  			post megustas_path, megusta: { post_id: @post.id }
@@ -32,7 +32,7 @@ class MegustaPostsTest < ActionDispatch::IntegrationTest
   	@megusta = Megusta.create!(user: @user, post: @post)
   	log_in_as(@user)
   	get root_path
- 	assert_select "div#post-#{@post.id} input[class=?]", "btn btn-primary btn-nomegusta"
+ 	assert_select "div#post-#{@post.id} input[class=?]", "btn btn-danger btn-nomegusta"
   	assert_difference 'Megusta.count', -1 do
 
  			delete megusta_path(@megusta)

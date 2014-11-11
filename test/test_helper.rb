@@ -25,7 +25,7 @@ class ActiveSupport::TestCase
   end
 
   def MiBarrioPosts(user)
-    @posts = Post.all.paginate(page: 1)
+    @posts = Post.all.paginate(page: 1).per_page(20)
   end
 
     private
