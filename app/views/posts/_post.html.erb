@@ -1,7 +1,12 @@
 <div class="post col-xs-12" id="post-<%= post.id %>">
 	<div class="post-mensaje">
 	  <div class="tag"><strong><%= post.tag.name %></strong></div>
-	  <div class="user"><h4><%= link_to post.user.name, post.user %><br><small><%= time_ago_in_words(post.created_at) %> atras.</small></h4></div>
+	  <div class="user"><h4><%= link_to post.user.name, post.user %>
+	  	<% if current_user?(post.user) %><small>
+    | <%= link_to "Eliminar", user_post_path(post.user, post), method: :delete,
+                                  data: { confirm: "Estas seguro?" } %> </small><% end %>
+
+	  	<br><small><%= time_ago_in_words(post.created_at) %> atras.</small></h4></div>
 	  <div class="content"><%= post.content %></div>
 	  <div class="megusta">
 	    <%= render partial: 'megustas/megusta', locals: { post: post } %>

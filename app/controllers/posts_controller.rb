@@ -19,13 +19,27 @@ class PostsController < ApplicationController
 			flash[:success] = "Post publicado"
       		redirect_to user_post_path(current_user.id, @post.id)
       	else
-      		
+
       		@posts = MiBarrioPosts(current_user)
       		@tags  = Tag.enform
       		render 'static_pages/home'
       	end
 
 	end
+
+	def destroy
+
+		@post = current_user.posts.find(params[:id])
+		if @post.destroy
+			flash[:success] = "Post eliminado"
+			redirect_to root_url
+		else
+			flash[:success] = "Post no pudo ser eliminado. Ingrese como el usuario correspondiente"
+			redirect_to login_url
+		end
+
+	end
+
 
 	private
 
