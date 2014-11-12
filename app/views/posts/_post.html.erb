@@ -4,7 +4,7 @@
 	  <div class="user"><h4><%= link_to post.user.name, post.user %>
 	  	<% if current_user?(post.user) %><small>
     | <%= link_to "Eliminar", user_post_path(post.user, post), method: :delete,
-                                  data: { confirm: "Estas seguro?" } %> </small><% end %>
+                                  data: { confirm: "Estas seguro?" } %> </small><% end %><br>
 
 	  	<small><%= time_ago_in_words(post.created_at) %> atras.</small></h4></div>
 	  <div class="content"><%= post.content %></div>
