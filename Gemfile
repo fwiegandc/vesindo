@@ -22,6 +22,7 @@ gem 'sdoc',                    '0.4.0', group: :doc
 gem 'pg',             '0.17.1'
 gem 'seedbank'
 gem 'masonry-rails'
+gem 'activerecord-postgis-adapter'
 
 group :development, :test do
 

@@ -30,6 +30,9 @@ GEM
       activemodel (= 4.2.0.beta2)
       activesupport (= 4.2.0.beta2)
       arel (>= 6.0.0.beta1, < 6.1)
+    activerecord-postgis-adapter (2.2.1)
+      activerecord (>= 4.0.0, < 4.2.0)
+      rgeo-activerecord (~> 1.2)
     activesupport (4.2.0.beta2)
       i18n (>= 0.7.0.beta1, < 0.8)
       json (~> 1.7, >= 1.7.7)
@@ -197,6 +200,10 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    rgeo (0.3.20)
+    rgeo-activerecord (1.2.0)
+      activerecord (~> 4.0)
+      rgeo (~> 0.3)
     ruby-progressbar (1.6.0)
     sass (3.4.6)
     sass-rails (5.0.0.beta1)
@@ -247,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgis-adapter
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.0)
   bootstrap-will_paginate (= 0.0.10)

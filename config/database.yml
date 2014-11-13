@@ -22,7 +22,9 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
+  adapter: postgis
+  host: localhost
+  encoding: unicode
   database: Vesindo_development
   pool: 5
   username: fwiegand
