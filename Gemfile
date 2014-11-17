@@ -24,6 +24,7 @@ gem 'pg',             '0.17.1'
 gem 'seedbank'
 gem 'masonry-rails'
 gem 'activerecord-postgis-adapter'
+gem "geocoder"
 
 group :development, :test do
 

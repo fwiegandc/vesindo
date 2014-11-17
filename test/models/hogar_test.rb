@@ -29,4 +29,10 @@ class HogarTest < ActiveSupport::TestCase
   	@hogar.save
   	assert_not @hogar2.valid?
   end
+
+
+  test "un hogar debiese tener una direccion" do
+  end
+  test "un hogar no puede tener dos direcciones" do
+  end
 end
