@@ -21,3 +21,4 @@
 //= require masonry/jquery.infinitescroll.min
 //= require masonry/modernizr-transitions
 //= require_tree .
+//= require geocomplete

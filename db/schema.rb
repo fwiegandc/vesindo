@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113195550) do
+ActiveRecord::Schema.define(version: 20141119171901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,9 @@ ActiveRecord::Schema.define(version: 20141113195550) do
     t.integer  "comuna_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.spatial  "loc",        limit: {:srid=>3785, :type=>"point"}
+    t.spatial  "loc",               limit: {:srid=>3785, :type=>"point"}
+    t.string   "activation_digest"
+    t.boolean  "activated",                                               default: false
   end
 
   add_index "direcciones", ["comuna_id"], :name => "index_direcciones_on_comuna_id"
@@ -105,11 +107,12 @@ ActiveRecord::Schema.define(version: 20141113195550) do
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "activation_digest"
-    t.boolean  "activated",         default: false
+    t.boolean  "activated",          default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.integer  "hogar_id"
+    t.boolean  "permitido_en_hogar", default: false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
