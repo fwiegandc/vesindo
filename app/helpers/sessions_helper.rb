@@ -42,12 +42,12 @@ module SessionsHelper
 
   def logged_in_user_permitido_en_hogar?
 
-      unless logged_in? && tiene_hogar?
+      unless logged_in?
         store_location
         flash[:danger] = "Please log in."
         return redirect_to login_url
       end
-      unless permitido_en_hogar?
+      unless tiene_hogar? && permitido_en_hogar?
         store_location
         flash[:danger] = "Please log in."
         redirect_to current_user
