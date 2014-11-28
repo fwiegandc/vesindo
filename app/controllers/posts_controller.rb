@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :logged_in_user, only: [:show, :create, :destroy]
+  before_action :logged_in_user_permitido_en_hogar?, only: [:show, :create, :destroy]
   before_action :correct_user, only: [:create, :destroy]
   before_action :has_tag, only: [:create]
 

@@ -7,6 +7,7 @@ michael:
   activated: true
   activated_at: <%= Time.zone.now %>
   hogar: CEO
+  permitido_en_hogar: true
 
 archer:
   name: Sterling Archer
@@ -14,7 +15,8 @@ archer:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  hogar: CEO
+  hogar: canucha
+  permitido_en_hogar: true
 
 lana:
   name: Lana Kane
@@ -22,7 +24,8 @@ lana:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  hogar: CEO
+  hogar: CEO2
+  permitido_en_hogar: true
 
 mallory:
   name: Mallory Archer
@@ -30,7 +33,24 @@ mallory:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  hogar: CEO2
+  hogar: wiegand
+  permitido_en_hogar: true
+
+alex:
+  name: Alexander Hanke
+  email: hahanke@puc.cl
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  hogar: wiegand
+  permitido_en_hogar: true
+
+sin_hogar:
+  name: Alexander Hanke
+  email: hahanke2@puc.cl
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:

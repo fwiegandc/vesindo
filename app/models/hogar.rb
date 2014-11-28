@@ -5,4 +5,16 @@ class Hogar < ActiveRecord::Base
 	validates :user_admin, presence: true, uniqueness: true
 	has_one :direccion
 
+	def existe_integrante?(user)
+
+		@usuario = User.where(hogar: self, user: user).first
+
+	end
+
+	def enviar_email_nuevo_integrante(user)
+
+		#Hogar.email_nuevo_integrante(user).deliver
+
+	end
+
 end

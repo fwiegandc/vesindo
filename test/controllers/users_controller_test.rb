@@ -39,4 +39,11 @@ class UsersControllerTest < ActionController::TestCase
     patch :update, id: @user, user: { name: @user.name, email: @user.email }
     assert_redirected_to root_url
 	end
+
+  test "user sin hogar debiese ser redireccionado a su muro" do
+
+    @user_sin_hogar = users(:sin_hogar)
+    log_in_as(@user_sin_hogar)
+
+  end
 end

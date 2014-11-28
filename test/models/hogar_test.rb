@@ -33,6 +33,19 @@ class HogarTest < ActiveSupport::TestCase
 
   test "un hogar debiese tener una direccion" do
   end
+  
   test "un hogar no puede tener dos direcciones" do
+  end
+
+  test "no debiese haber dos hogares con la misma direccion" do
+  end
+
+  test "si un hogar es eliminado, todos los integrantes de el deben pasar a no estar validados" do
+  end
+
+  test "si un hogar se elimina, la direccion debe ser eliminada" do
+  end
+
+  test "si el usuario admin es eliminado, entondes la administracion debe pasar a otro usuario" do
   end
 end

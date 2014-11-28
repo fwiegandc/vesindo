@@ -1,5 +1,5 @@
 class Direccion < ActiveRecord::Base
-
+  attr_accessor :activation_token
    # auto-fetch coordinates
 
   # Create a simple mercator factory. This factory itself is
@@ -18,6 +18,11 @@ class Direccion < ActiveRecord::Base
 	validates :direccion, presence: true
 	validates :numero, presence: true
   validates :comuna, presence: true
+  validates :loc, presence: true
+
+  validates_uniqueness_of :direccion, scope: [:numero, :bloque, :dpto, :comuna]
+
+  before_validation :create_activation_digest
 
   #after_validation :geocode #, :if => :direccion_y_numero_changed?
   #geocoded_by :direccion_y_numero do |obj, results|
@@ -26,8 +31,7 @@ class Direccion < ActiveRecord::Base
   #  end
   #end
 
-  def direccion_y_numero
-    "#{self.direccion}, #{self.numero}, #{self.comuna.name}, Region Metropolitana, Chile"
+  def enviar_validacion
   end
 
   # To interact in projected coordinates, just use the "loc"
@@ -47,5 +51,38 @@ class Direccion < ActiveRecord::Base
   def loc_geographic=(value)
     self.loc = FACTORY.project(value)
   end
+
+  def loc_geographic_lat_lon(lat, lon)
+    self.loc_geographic = FACTORY.point(lat, lon)
+  end
+
+  #Empezamos con la validación de las direcciones
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def Direccion.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+      # Creates and assigns the activation token and digest.
+  def create_activation_digest
+      self.activation_token  = Direccion.new_token
+      self.activation_digest = Direccion.digest(activation_token)
+  end
+
+  def Direccion.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  #y los mails de envío
+  def send_direccion_codigo_email
+    UserMailer.password_reset(self).deliver
+  end
+
 
 end

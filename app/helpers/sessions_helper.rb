@@ -19,6 +19,41 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def tiene_hogar?
+    !current_user.hogar.nil?
+  end
+
+  def permitido_en_hogar?
+    current_user.permitido_en_hogar
+  end
+
+  def usuario_con_hogar
+
+    flash[:danger] = "Tu hogar está siendo validado. Hasta que eso ocurra, solo puedes actualizar tu perfíl"
+    redirect_to current_user unless tiene_hogar?
+
+  end
+
+  def usuario_sin_hogar
+
+    redirect_to root_path unless current_user.hogar.nil?
+
+  end
+
+  def logged_in_user_permitido_en_hogar?
+
+      unless logged_in? && tiene_hogar?
+        store_location
+        flash[:danger] = "Please log in."
+        return redirect_to login_url
+      end
+      unless permitido_en_hogar?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to current_user
+      end
+  end
+
   def logged_in_user
       unless logged_in?
         store_location

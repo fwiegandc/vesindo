@@ -6,4 +6,8 @@ class StaticPagesController < ApplicationController
   	@posts = MiBarrioPosts(current_user)
 
   end
+
+  private
+
+
 end

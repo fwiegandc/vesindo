@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
-  before_validation :asignar_hogar
   before_create :create_activation_digest
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -22,10 +21,6 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def asignar_hogar
-    self.hogar_id = 2 if self.hogar_id.nil?
-  end
-
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
@@ -36,9 +31,13 @@ class User < ActiveRecord::Base
     update_attribute(:activated_at, Time.zone.now)
   end
 
+  def activar_en_hogar
+    update_attribute(:permitido_en_hogar,    true)
+  end
+
   # Sends activation email.
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    UserMailer.account_activation(self).deliver
   end
 
   # Sets the password reset attributes.
@@ -50,7 +49,7 @@ class User < ActiveRecord::Base
 
   # Sends password reset email.
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self).deliver
   end
 
     # Returns a random token.
@@ -81,6 +80,11 @@ class User < ActiveRecord::Base
     def create_activation_digest
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    #vemos si el usuario está permitido en el hogar
+    def permitido_en_hogar?
+        self.permitido_en_hogar
     end
 
 end
