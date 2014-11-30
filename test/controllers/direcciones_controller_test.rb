@@ -40,7 +40,7 @@ class DireccionesControllerTest < ActionController::TestCase
 
   end
 
-  test "direccion válida de casa, nuevo usuario, direccion inexistente, debiese ser insertada, creado el hogar y enviado carta confirmación" do
+  test "direccion válida de casa, nuevo usuario, direccion inexistente, debiese ser insertada, creado el hogar y enviado carta confirmación y rederigido a root_path" do
 
   	log_in_as(@user_sin_hogar)
   	assert_difference 'Direccion.count',+1 do
@@ -56,7 +56,7 @@ class DireccionesControllerTest < ActionController::TestCase
   	#Chequeamos que el usuario no esté permitido en el hogar
   	assert_not @user_sin_hogar.permitido_en_hogar
   	#Chequeamos que se redirige a la pagina de activacion de la direccion
-  	assert_redirected_to direccion_activations_edit_path
+    assert_redirected_to root_path
 
   end
 

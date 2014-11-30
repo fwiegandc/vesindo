@@ -52,7 +52,7 @@ class DireccionesController < ApplicationController
 				#Notificamos al usuario de que se le ha enviado una carta para validarlo				
 				flash[:success] = "Una carta ha sido enviada a tu hogar para validarte. Muchas gracias!!"
 				#redireccionamos a la pagina de activacion de la direccion
-				redirect_to direccion_activations_edit_path
+				redirect_to root_path
 
 		else
 
@@ -88,7 +88,7 @@ class DireccionesController < ApplicationController
 						@direccion_ya_ocupada.hogar = @nuevo_hogar
 						@direccion_ya_ocupada.save
 						flash[:success] = "Hemos detectado que ya fue enviado el código de verificación a este hogar. Seras redireccionado para insertar el codigo"
-						redirect_to direccion_activations_edit_path
+						redirect_to new_direccion_activation_path
 
 
 					end

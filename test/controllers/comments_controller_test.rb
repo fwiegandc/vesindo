@@ -26,7 +26,7 @@ class CommentsControllerTest < ActionController::TestCase
    @user_sin_hogar = users(:sin_hogar)
    log_in_as(@user_sin_hogar)
    post :create, user_id: @post.user, post_id: @post,  comment: { content: "Lorem ipsum" }
-   assert_redirected_to login_url
+   assert_redirected_to @user_sin_hogar
 
   end
 

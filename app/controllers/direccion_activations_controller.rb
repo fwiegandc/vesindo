@@ -1,9 +1,12 @@
 class DireccionActivationsController < ApplicationController
 	#Chequeamos que el usuario esté logueado
 	
-  def edit
+  def new
+  end
 
-  		#Buscamos la direccion que hay que activar
+  def create
+
+  	  		#Buscamos la direccion que hay que activar
   		@direccion = Direccion.find_by(activation_digest: params[:id])
 
   		if params[:email]
@@ -20,7 +23,11 @@ class DireccionActivationsController < ApplicationController
 		    end
 		end
 
-
   end
+
+  private
+
+  	def activacion_params
+  	end
 
 end
