@@ -16,12 +16,6 @@ class HogaresControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get index" do
-    log_in_as(@user_admin)
-    get :index
-    assert_response :success
-  end
-
   test "usuario logueado debe poder ver el indice de hogares" do
 
     log_in_as(@user_admin)
@@ -36,6 +30,16 @@ class HogaresControllerTest < ActionController::TestCase
 
     get :show, id: @hogar
     assert_redirected_to login_url
+  end
+
+  test "usuario logueado, con hogar pero no validado en el no puede ver el hogar ni lista de hogares" do
+    @user_admin.permitido_en_hogar = false
+    @user_admin.save
+    log_in_as(@user_admin)
+    get :index
+    assert_redirected_to @user_admin
+    get :show, id: @hogar
+    assert_redirected_to @user_admin
   end
 
   test "usuario debe poder ver solo hogares amigos, del barrio o permitidas" do

@@ -17,4 +17,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
  inflect.irregular 'hogar', 'hogares'
  inflect.irregular 'megusta', 'megustas'
+ inflect.irregular 'direccion', 'direcciones'
 end

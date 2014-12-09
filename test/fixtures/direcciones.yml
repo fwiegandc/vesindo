@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Generamos la geocolalización
+
+casa:
+  direccion: "Bartolomé de Las Casas"
+  numero: 1990
+  hogar: CEO
+  comuna: vitacura
+  activated: true
+
+departamento_con_torre_2:
+  direccion: "Bartolomé de Las Casas"
+  numero: 1991
+  bloque: "1"
+  dpto: "105"
+  hogar: CEO2
+  comuna: vitacura
+  activated: true
+
+departamento_con_torre_1:
+  direccion: "Bartolomé de Las Casas"
+  numero: 1991
+  bloque: "2"
+  dpto: "106"
+  hogar: canucha
+  comuna: vitacura
+  activated: true
+
+casa_en_villa:
+  direccion: "Bartolomé de Las casas"
+  numero: 1992
+  villa: "Villa San Juan"
+  hogar:  wiegand
+  comuna: vitacura
+  activated: true
+
+direccion_sin_hogar:
+  direccion: "Tiziano"
+  numero: 340
+  bloque: ""
+  dpto: ""
+  comuna: lascondes
+  activated: true

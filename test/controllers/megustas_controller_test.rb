@@ -38,6 +38,16 @@ class MegustasControllerTest < ActionController::TestCase
 
   end
 
+  test "usuario loguado pero sin hogar no puede poner me gusta" do
+    @user.permitido_en_hogar = false
+    @user.save
+    log_in_as(@user)
+    assert_no_difference "Megusta.count" do
+      post :create, megusta: { post_id: @post }
+    end
+    assert_redirected_to @user
+  end
+
   test "solo el usuario puede destruir sus me gusta" do
 
   	log_in_as(@other_user)

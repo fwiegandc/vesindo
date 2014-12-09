@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+	<p>Hola <%= @user.name %>, </p>
+
+	<p>
+	El usuario <%= @nuevo_user.name %> quiere entrar a tu hogar como un nuevo integrante. Haz clic en el siguiente vínculo para aceptarlo
+	</p>
+
+	<%= link_to "Aceptar al usuario en mi hogar", usuario_en_hogar_activations_edit_url(
+	                                                    email: @nuevo_user.email) %>
+
+	<p>
+		Esperamos que sigas disfrutando,<br />
+		El equipo de Vesindo
+	</p>
+  </body>
+</html>

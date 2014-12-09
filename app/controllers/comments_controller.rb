@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-  	before_action :puede_postear_en_comentario
-  	before_action :logged_in_user, only: [:create, :destroy]
+  	before_action :logged_in_user_permitido_en_hogar?
   	before_action :correct_user_for_deleting_comment, only: [:destroy]
 
   	def create
@@ -33,10 +32,6 @@ class CommentsController < ApplicationController
 	      @comment = Comment.find(params[:id])
 	      @user = @comment.user
 	      redirect_to(login_url) unless current_user?(@user)
-	    end
-
-	    def puede_postear_en_comentario
-	    	true
 	    end
 
 	    def create_params

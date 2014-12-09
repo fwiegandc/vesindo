@@ -1,0 +1,2 @@
+module UsuarioEnHogarActivationsHelper
+end

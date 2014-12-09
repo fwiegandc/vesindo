@@ -1,15 +1,24 @@
-<h1>Bienvenido a Vesindo!</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
 
-<p>Hola <%= @user.name %>,</p>
+	<h1>Bienvenido a Vesindo!</h1>
 
-<p>
-¡Que alegría que estés junto a nosotros! Porfavor, haz clic en el siguiente link para terminar de activar tu cuenta:
-</p>
+	<p>Hola <%= @user.name %>,</p>
 
-<%= link_to "Activar cuenta Vesindo", edit_account_activation_url(@user.activation_token,
-                                                    email: @user.email) %>
+	<p>
+	¡Que alegría que estés junto a nosotros! Porfavor, haz clic en el siguiente link para terminar de activar tu cuenta:
+	</p>
 
-<p>
-	Te damos las gracias sinceras,
-	El equipo de Vesindo
-</p>
+	<%= link_to "Activar Cuenta Vesindo", edit_account_activation_url(@user.activation_token,
+	                                                    email: @user.email) %>
+
+	<p>
+		Te damos las gracias sinceras,<br />
+		El equipo de Vesindo
+	</p>
+  </body>
+</html>

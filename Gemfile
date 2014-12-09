@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.beta2'
+gem 'rails', '4.1'
 gem 'bcrypt',                  '3.1.7'
 gem 'faker',                   '1.4.2'
+gem 'mini_portile', '0.6.0'
 gem 'carrierwave',             '0.10.0'
 gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.23.0'
@@ -22,6 +23,10 @@ gem 'sdoc',                    '0.4.0', group: :doc
 gem 'pg',             '0.17.1'
 gem 'seedbank'
 gem 'masonry-rails'
+gem 'activerecord-postgis-adapter'
+gem 'geocoder'
+gem 'geocomplete_rails'
+gem 'wicked_pdf'
 
 group :development, :test do
 
@@ -41,4 +46,5 @@ group :production do
 
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn',        '4.8.3'
+  gem 'wkhtmltopdf-heroku'
 end

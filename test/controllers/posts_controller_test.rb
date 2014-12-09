@@ -14,7 +14,7 @@ class PostsControllerTest < ActionController::TestCase
 
   end
 
-  test "usuarios logueados pueden ver los post" do
+  test "usuarios logueados y con hogar pueden ver los post" do
 
   	log_in_as(@user)
   	get :show, user_id: @user, id: @post
@@ -59,6 +59,32 @@ class PostsControllerTest < ActionController::TestCase
 
   	get :show, user_id: @user, id: @post
   	assert_response :redirect
+
+  end
+
+  test "usuario no permitidos en hogar no pueden ver ni publicar ni eliminar post" do
+    @user.permitido_en_hogar = false
+    @user.save
+    log_in_as(@user)
+
+    #el suario trata de ver el post
+    get :show, user_id: @user, id: @post
+    assert_redirected_to @user
+
+    #el usuario trata de postear
+    assert_no_difference "Post.count" do
+     post :create, user_id: @user, post: {content: "Post pertenece al usuario", tag: @tag.slug}
+    end
+    assert_redirected_to @user
+
+    #el usuario intenta eliminar el mensaje
+    @post.save
+    assert_no_difference 'Post.count' do
+
+      delete :destroy, user_id: @user, id: @post
+
+    end
+    assert_redirected_to @user
 
   end
 

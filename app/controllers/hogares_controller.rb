@@ -1,5 +1,5 @@
 class HogaresController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user_permitido_en_hogar?
 
   def index
 

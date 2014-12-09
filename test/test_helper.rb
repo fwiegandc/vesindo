@@ -5,6 +5,12 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+  
+  #
+  # kill verbsity
+  #
+  verbosity = $-v
+  $-v = nil
 
   # Add more helper methods to be used by all tests here...
     def is_logged_in?
@@ -33,6 +39,11 @@ class ActiveSupport::TestCase
     # Returns true inside an integration test.
     def integration_test?
       defined?(post_via_redirect)
+    end
+
+    def loc_geographic_random
+      @factory = RGeo::Geographic.simple_mercator_factory
+      @factory.point(rand(0..30), rand(0..30))
     end
 
 end

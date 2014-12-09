@@ -1,6 +1,6 @@
 class MegustasController < ApplicationController
 	#before_ asegurarse que en destroy es el usuairo adecuado
-	before_action :logged_in_user
+	before_action :logged_in_user_permitido_en_hogar?
 	before_action :current_user_can_only_delete_own_megustas, only: [:destroy]
 
   def create

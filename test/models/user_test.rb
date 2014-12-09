@@ -115,4 +115,17 @@ class UserTest < ActiveSupport::TestCase
 
   end
 
+  test "Usuario sin hogar debiese ser redireccionado a la página de insertar codigo verificacion" do
+  end
+
+  test "un usuario que es admin de un hogar, no puede pertenecer a otro hogar" do
+
+    @hogar = hogares(:canucha)
+    @admin_hogar = @hogar.user_admin
+    @otro_hogar = hogares(:wiegand)
+    @admin_hogar.hogar = @otro_hogar
+    assert_not @admin_hogar.valid?
+
+  end
+
 end

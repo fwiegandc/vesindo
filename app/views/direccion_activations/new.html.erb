@@ -1,0 +1,8 @@
+<div class="container">
+	<h2>Porfavor, ingresa el código de activación</h2>
+	<%= form_for :direccion_activations, url: direccion_activations_path do |f| %>
+
+	<%= f.text_field :activation_code, placeholder: "Escribe aquí el código de activación" %>
+	<%= f.submit "Activar mi usuario!", class: "btn btn-primary" %>
+	<% end %>
+</div>

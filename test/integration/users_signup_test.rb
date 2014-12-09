@@ -20,7 +20,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		
 	end
 
-	test "valid signup information with account activation" do
+	test "valid signup information with account activation redirects to new_direcciones" do
 	    get new_user_path
 	    name  = "Example User"
 	    email = "user@example.com"
@@ -48,7 +48,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	    get edit_account_activation_path(user.activation_token, email: user.email)
 	    assert user.reload.activated?
 	    follow_redirect!
-	    assert_template 'static_pages/_home_page_logged_in'
+	    follow_redirect!
+	    assert_template 'direcciones/new'
 	    assert is_logged_in?
   end
 

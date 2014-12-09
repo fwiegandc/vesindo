@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Porfavor, busca tu direccion</h2>
+  <%= form_for @direccion do |f| %>
+
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="col-sm-6">
+              <%= f.text_field :direccion, id: "geocomplete", placeholder: "Escribe tu direccion", class: 'form-control' %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.text_field :bloque, placeholder: "Bloque/Torre", class: 'form-control' %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.text_field :dpto, placeholder: "Dpto", class: 'form-control' %>
+      </div>
+      <div class="col-sm-2">
+        <input id="find" type="button" value="Buscar" class="btn btn-primary" />
+      </div>
+
+      <div class="row">
+        <div class="map_canvas"></div>
+      </div>
+      <div class="row">
+        <%= f.submit "Confirmar direccion!", class: "btn btn-primary" %>
+      </div>
+  <% end %>
+</div>
