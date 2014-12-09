@@ -14,4 +14,12 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  def nuevo_user_hogar
+
+    user = User.first
+    user_nuevo = User.last
+    UserMailer.nuevo_user_hogar(user, user_nuevo)
+
+  end
+
 end

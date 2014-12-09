@@ -36,6 +36,15 @@ module SessionsHelper
 
   end
 
+  def usuario_es_administrador_del_hogar
+
+    unless current_user.hogar.user_admin == current_user 
+      flash[:danger] = "Debes ser el administrador de tu hogar para activar tu dirección"
+      redirect_to login_url 
+    end
+      
+  end
+
   def usuario_no_permitido_en_hogar
 
     unless !permitido_en_hogar?

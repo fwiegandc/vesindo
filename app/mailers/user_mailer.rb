@@ -20,4 +20,13 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail to: user.email, subject: "Recuperación de contraseña"
   end
+
+  def nuevo_user_hogar(user_admin, user_nuevo)
+
+    @user = user_admin
+    @nuevo_user = user_nuevo
+    mail to: @user.email, subject: "#{@nuevo_user.name} quiere ingresar a tu hogar"
+
+  end
+
 end

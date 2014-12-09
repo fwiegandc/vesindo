@@ -1,0 +1,9 @@
+Hola <%= @user.name %>
+
+<%= @nuevo_user.name %> quiere entrar a tu hogar como un nuevo integrante. Haz clic en el siguiente vínculo para aceptarlo
+
+
+<%= usuario_en_hogar_activations_edit_url(email: @nuevo_user.email) %>
+
+Esperamos que sigas disfrutando,
+El equipo de Vesindo

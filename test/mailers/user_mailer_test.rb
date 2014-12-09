@@ -24,4 +24,11 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match CGI::escape(user.email), mail.body.encoded
   end
 
+  test "nuevo_user_hogar" do
+    user = users(:michael)
+    nuevo_user = users(:usuario_hogar_michael)
+    mail = UserMailer.nuevo_user_hogar(user, nuevo_user)
+
+  end
+
 end
