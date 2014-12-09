@@ -241,6 +241,7 @@ GEM
     wicked_pdf (0.11.0)
       rails
     will_paginate (3.0.7)
+    wkhtmltopdf-heroku (1.0.0)
 
 PLATFORMS
   ruby
@@ -279,3 +280,4 @@ DEPENDENCIES
   web-console (= 2.0.0.beta3)
   wicked_pdf
   will_paginate (= 3.0.7)
+  wkhtmltopdf-heroku
