@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
   	#Si no tiene direccion ni hogar, rederigimos para que la inserte
   	def user_logged_in_sin_hogar
 
-		redirect_to new_direccion_path if logged_in? && !tiene_hogar?
+		  redirect_to new_direccion_path if logged_in? && !tiene_hogar?
 
   	end
 

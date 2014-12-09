@@ -238,6 +238,8 @@ GEM
       binding_of_caller (= 0.7.3.pre1)
       railties (~> 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    wicked_pdf (0.11.0)
+      rails
     will_paginate (3.0.7)
 
 PLATFORMS
@@ -275,4 +277,5 @@ DEPENDENCIES
   uglifier (= 2.5.3)
   unicorn (= 4.8.3)
   web-console (= 2.0.0.beta3)
+  wicked_pdf
   will_paginate (= 3.0.7)

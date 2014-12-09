@@ -22,7 +22,7 @@ class Direccion < ActiveRecord::Base
 
   validates_uniqueness_of :direccion, scope: [:numero, :bloque, :dpto, :comuna]
 
-  before_validation :create_activation_digest
+  before_create :create_activation_digest
 
   #after_validation :geocode #, :if => :direccion_y_numero_changed?
   #geocoded_by :direccion_y_numero do |obj, results|
@@ -32,6 +32,12 @@ class Direccion < ActiveRecord::Base
   #end
 
   def enviar_validacion
+    #Generamos la carta de verificacion
+    pdf = WickedPdf.new.pdf_from_string("<h1>¡Hola #{self.hogar.user_admin.name}!</h1> <p>Su código de validación es #{self.activation_token} </p> <p> Un abrazo afectuoso,</p> <p> El equipo de Vesindo</p>", encoding: "UTF-8")
+    save_path = Rails.root.join('pdfs',"#{self.hogar.user_admin.name}.pdf")
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end
   end
 
   # To interact in projected coordinates, just use the "loc"
@@ -76,12 +82,19 @@ class Direccion < ActiveRecord::Base
   end
 
   def Direccion.new_token
-    SecureRandom.urlsafe_base64
+    #generamos un token leible para el usuario
+    rand(99999)
   end
 
   #y los mails de envío
   def send_direccion_codigo_email
     UserMailer.password_reset(self).deliver
+  end
+
+  # Activates an account.
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
   end
 
 

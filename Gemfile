@@ -26,6 +26,7 @@ gem 'masonry-rails'
 gem 'activerecord-postgis-adapter'
 gem 'geocoder'
 gem 'geocomplete_rails'
+gem 'wicked_pdf'
 
 group :development, :test do
 

@@ -48,13 +48,6 @@ class DireccionTest < ActiveSupport::TestCase
 
   end
 
-  test "activation_digest debiese ser creado automaticamente" do
-
-    @casa.save
-    assert_not @casa.activation_digest.nil?
-
-  end
-
   test "direccion sin geolocalizacion no debiese entrar a la base de datos" do
 
     @casa.loc = nil

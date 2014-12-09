@@ -20,7 +20,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		
 	end
 
-	test "valid signup information with account activation" do
+	test "valid signup information with account activation redirects to new_direcciones" do
 	    get new_user_path
 	    name  = "Example User"
 	    email = "user@example.com"

@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def activar_en_hogar
-    update_attribute(:permitido_en_hogar,    true)
+    update_attribute(:permitido_en_hogar, true)
   end
 
   # Sends activation email.

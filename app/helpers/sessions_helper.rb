@@ -27,10 +27,30 @@ module SessionsHelper
     current_user.permitido_en_hogar
   end
 
+  def permitido_en_hogar
+
+    unless permitido_en_hogar?
+      flash[:danger] = "Debes inscribir tu hogar, o esperar a ser validado en el"
+      redirect_to current_user 
+    end
+
+  end
+
+  def usuario_no_permitido_en_hogar
+
+    unless !permitido_en_hogar?
+      flash[:danger] = "Ya estás permitido en tu hogar, no puedes acceder aquí"
+      redirect_to root_url
+    end
+
+  end
+
   def usuario_con_hogar
 
-    flash[:danger] = "Tu hogar está siendo validado. Hasta que eso ocurra, solo puedes actualizar tu perfíl"
-    redirect_to current_user unless tiene_hogar?
+    unless tiene_hogar?
+      flash[:danger] = "Debes inscribir tu hogar antes de ingresar a la red"
+      redirect_to new_direccion_path
+    end
 
   end
 
